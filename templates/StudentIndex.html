@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+{% block title %}
+    StudentIndex
+{% endblock %}
+
+{% block header %}
+    <h2 style="font-size:200%;color:white;font-family:arial;margin-top: 0; position: relative; top: 6px; left: 11px;">
+        Student Course Selection</h2>
+{% endblock %}
+
+{% block menu %}
+    <br/>
+    <table>
+        <tr>
+            <td>
+                <br/><br/><br/>
+                <i style="font-size:120%;color:#191970;font-family:arial; position: relative;left: 15px;">
+                    Hello,<br/>{{ username }}!</i>
+            </td>
+            <td>
+                    <a href="/logout">
+                        <button
+                               style="width:75px; height:30px; font-size:90%; background:#191970; color:white; position: relative; top: -30px;"
+                                name="log_out">Log out</button>
+                    </a>
+                    <br/>
+                    <a href="/passwordchange">
+                        <button
+                               style="width:75px; height:50px; font-size:90%; background:#191970; color:white; position: relative; top: -20px"
+                                name="change">Change Password</button>
+                    </a>
+            </td>
+    </table>
+    <br/>
+    <form action="" method="POST">
+        <table border="1" style="font-size:80%;font-family:arial;color:#191970" frame="void" bgcolor="white"
+               width="100px">
+            <tr height="20">
+                <td width="100">Course ID</td>
+                <td width="50">
+                    <input type="text" name="course_id" style="width:150px"/>
+                </td>
+            </tr>
+            <tr height="20">
+                <td width="100">Course Name</td>
+                <td width="50">
+                    <input type="text" name="course_name" style="width:150px"/>
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td>
+                    <input type="submit"
+                           style="width:60px; height:30px; font-size:90%; background:#191970; color:white; position: relative; top: 15px;left: 5px;"
+                           value="Search" name="action"/>
+
+                </td>
+                <td>
+                    <input type="submit"
+                           style="width:60px; height:30px; font-size:90%; background:#191970; color:white; position: relative; top: 15px;left: 10px;"
+                           value="Select" name="action"/>
+                </td>
+                <td>
+                    <input type="submit"
+                           style="width:60px; height:30px; font-size:90%; background:#191970; color:white; position: relative; top: 15px;left: 15px;"
+                           value="Delete" name="action"/>
+                </td>
+            </tr>
+        </table>
+    </form>
+{% endblock %}
+
+{%block content%}
+
+    {% if course_table %}
+    <table border="3" cellpadding="5" bgcolor="white" frame="void" width="700" height="300">
+        <tr bgcolor="#EEEEEE" style="font-family:arial;font-size:120%" height="50">
+            <td>&nbsp;</td>
+            <td>Monday</td>
+            <td>Tuesday</td>
+            <td>Wednesday</td>
+            <td>Thursday</td>
+            <td>Friday</td>
+        </tr>
+        {% for time in range(1,7) %}
+        <tr style="font-family:arial;" height="50">
+            <td bgcolor="#EEEEEE">{{ time }}</td>
+            {% for day in range(1,6) %}
+              <td>{{ course_table[day][time] }}</td>
+{#                <td>123</td>#}
+            {% endfor %}
+            </tr>
+        {% endfor %}
+
+    </table>
+    {% endif %}
+    <br/><br/>
+
+    {% if course_list %}
+    <table border="1" cellpadding="3" bgcolor="white" frame="void" width="700px">
+        <tr bgcolor = "#EEEEEE" style = "font-family:arial;font-size:100%;">
+            <td>Course ID</td>
+            <td>Course Name</td>
+            <td>Course Time</td>
+            <td>Teacher</td>
+        </tr>
+        {% for item in course_list %}
+        <tr style="font-size: small">
+            {%for attribute in range(0,4)%}
+                <td>{{ item[attribute] }}</td>
+            {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+    {% if course_info %}
+    <table border="1" cellpadding="5" frame="void" style="background-color: white">
+    <tr style="background-color: #EEEEEE">
+        <td>Course ID</td>
+        <td>Course Name</td>
+        <td>Course Time</td>
+        <td>Teacher Name</td>
+        <td>Capacity</td>
+        <td>Occupied</td>
+        </tr>
+        {% for item in course_info %}
+        <tr>
+        {% for attribute in range(0,6) %}
+            <td>{{ item[attribute] }}</td>
+        {% endfor %}
+            </tr>
+    {% endfor %}
+    </table>
+    {% endif %}
+{% endblock %}

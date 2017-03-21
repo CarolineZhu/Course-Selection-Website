@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style type="text/css">
+    div#container{background-color: AliceBlue}
+    div#header {background-color:#191970;height:50px;}
+    div#menu {background-color:#EEEEEE;width:215px;float:left;height: 570px;}
+    div#content {width:780px;float:right;background-color: Aliceblue}
+    div#footer {background-color:#191970;clear:both;text-align:center;height:20px;}
+    h1 {margin-bottom:0;}
+    h2 {margin-bottom:0;font-size:18px;}
+    ul {margin:0;}
+    li {list-style:none;}
+    </style>
+    <title>
+        {% block title %}
+            Our DatabasePJ
+        {% endblock %}
+    </title>
+</head>
+<body style="margin: 0; background-color:Aliceblue;">
+<div id="container">
+
+    <div id="header">
+    <table>
+    <tr>
+        <td>
+        {%block header%}
+        {%endblock%}
+        </td>
+        <td>
+        {% include "partials/error_msg.html" %}
+        {% include "partials/success_msg.html" %}
+        </td>
+    </tr>
+    </table>
+    </div>
+    <div id="menu">
+        {%block menu%}
+        {%endblock%}
+    </div>
+    <div id = "content">
+        {%block content%}
+        {%endblock%}
+    </div>
+    <div id="footer" style="color:white;font-size:80%;">
+<span style="position:relative; top: 2px; font-size:120%;font-family:arial">
+	Database Project
+</span>
+</div>
+    </div>
+</body>
+</html>

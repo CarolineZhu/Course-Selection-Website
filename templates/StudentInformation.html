@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block Title %}
+    Student information
+{% endblock %}
+
+{% block header %}
+    <h2 style="font-size:200%;color:white;font-family:arial;margin-top: 0; position: relative; top: 6px; left: 11px;">
+        Student Information</h2>
+{% endblock %}
+
+{% block menu %}
+    <table cellpadding="5" style="position: relative;top: 50px">
+        <tr>
+        <td style="font-family: Arial; color: #191970; font-size: large">Course ID</td>
+        <td>{{ course_info[0][0] }}</td>
+        </tr>
+        <tr>
+        <td style="font-family: Arial; color: #191970; font-size: large">Course Name</td>
+        <td>{{ course_info[0][1] }}</td>
+        </tr>
+    </table>
+{% endblock %}
+
+{% block content %}
+    {% if student_info %}
+        <table border="3" cellpadding="3" bgcolor="white" frame="void" width="700">
+            <tr bgcolor = "#EEEEEE" style = "font-family:arial;font-size:120%;">
+                <td>Student ID</td>
+                <td>Student Name</td>
+                <td>Gender</td>
+                <td>Major</td>
+                <td>Grade</td>
+                <td>Tel.</td>
+                <td>Email</td>
+                <td>Address</td>
+            </tr>
+            {% for item in student_info %}
+                <tr>
+                    {% for attribute in range(0,8) %}
+                        <td style="font-size: small">{{ item[attribute] }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No one has selected the course yet.</p>
+    {% endif %}
+{% endblock %}

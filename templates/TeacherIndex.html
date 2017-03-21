@@ -1,0 +1,103 @@
+{%extends "base.html"%}
+
+{%block title%}
+TeacherIndex
+{%endblock%}
+
+{%block header%}
+<h2 style="font-size:200%;color:white;font-family:arial;margin-top: 0; position: relative; top: 6px; left: 11px;">Teacher Course Administration</h2>
+{%endblock%}
+
+{%block menu%}
+	<br/>
+	<table>
+		<tr>
+			<td>
+            <br/>
+<i style="font-size:120%;color:#191970;font-family:arial; position: relative; left:5px">
+Hello,<br/>{{username}}!</i>
+</td>
+<td>
+    <a href = "/logout">
+	<button style = "width:75px; height:30px; font-size:90%; background:#191970; color:white; position: relative; top: -15px;" name = "log_out" >Log out</button></a>
+    <br/>
+    <a href="/passwordchange">
+        <button style="width:75px; height:50px; font-size:90%; background:#191970; color:white; position: relative; top: -10px" name="change">Change Password</button>
+    </a>
+</td>
+</table>
+<br/>
+<form action = "" method="POST">
+    <table border="1" style="font-size:80%;font-family:arial;color:#191970" frame="void" bgcolor="white" width="100px">
+        <tr height="20">
+            <td width="100">Course ID</td>
+            <td width="50">
+                <input type="text" name="course_id"  style="width:140px"/>
+            </td>
+        </tr>
+        <tr height="20">
+            <td width="100">Course Name</td>
+            <td width="50">
+                <input type="text" name="course_name" style="width:140px"/>
+            </td>
+        </tr>
+        <tr height="20">
+            <td width="100">Time</td>
+            <td width="50">
+                <input type="text" name="course_time"  style="width:140px"/>
+            </td>
+        </tr>
+        <tr height="20">
+            <td width="100">Capacity</td>
+            <td width="50">
+                <input type="text" name="capacity"  style="width:140px"/>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td>
+                <input type="submit"
+                       style="width:80px; height:30px; font-size:100%; background:#191970; color:white; position: relative; top: 15px;left: 15px;"
+                       value="add" name="action"/>
+
+            </td>
+            <td>
+                <input type="submit"
+                       style="width:80px; height:30px; font-size:100%; background:#191970; color:white; position: relative; top: 15px;left: 30px;"
+                       value="remove" name="action"/>
+            </td>
+        </tr>
+    </table>
+</form>
+{%endblock%}
+
+{%block content%}
+<table border="3" cellpadding="5" bgcolor="white" frame = "void" width = "600px" height = "200px" style = "position:relative; top: 20px">
+<tr bgcolor = "#EEEEEE" style = "font-family:arial;font-size:120%;position: relative; left:600px;" height = "40px">
+<td width = "50px">Course ID</td>
+<td width = "150px">Course Name</td>
+<td width = "50px">Course Time</td>
+<td width = "50px">Capacity</td>
+<td width = "50px">Occupied</td>
+</tr>
+{#<form action="/StudentInfo/<course_id>" method="post">#}
+{%for course in teach_course%}
+	<tr>
+        {% for attribute in range(0,5) %}
+            {% if attribute == 4 %}
+                <td>
+                    <a href="/StudentInfo/{{ course[0] }}">
+                        {{ course[attribute] }}
+                    </a>
+{#                    <input type="submit" value="{{ course[attribute] }}" name="query_course"/>#}
+                </td>
+            {% else %}
+		        <td>{{course[attribute]}}</td>
+            {% endif %}
+            {% endfor %}
+	</tr>
+{%endfor%}
+{#</form>#}
+</table>
+{%endblock%}

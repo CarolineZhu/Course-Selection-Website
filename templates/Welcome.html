@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<style type="text/css">
+div#login {background-color:AliceBlue;height:130px;width:550px;float:right;}
+    .page-welcome .error,.page-welcome .success{
+        color: #191970!important;
+    }
+</style>
+    <title>Welcome</title>
+</head>
+<body bgcolor = "AliceBlue" class="page-welcome">
+{% include "partials/error_msg.html" %}
+{% include "partials/success_msg.html" %}
+    <br/>
+    <br/>
+    <h1 align = "center" style = "color:#191970;font-size:270%"> WELCOME! </h1>
+    <br/>
+    <p align = "center" style="font-family:arial;font-size:150%">
+        This is a Course Selection Website.
+        <br/>
+        <i style = "font-size:50%">made by Danqing Wang, Ruiyuan Zhu, Ying Lu</i>
+    </p>
+    <br/>
+    <br/>
+    <form action="" method="POST">
+    <div id="login">
+    <div  style="font-family:arial;font-size:50%" >
+        <input type="radio" name="user_type" value="student"  /> Student
+        <br />
+        <input type="radio" name="user_type" value="teacher"  /> Teacher
+    </div>
+<table style="border:none;font-family:arial;font-size:50%">
+           <tr>
+            <td>
+            ID:</td>
+            <td>
+            <input type="text" name="id">
+            </td>
+           </tr>
+            <tr>
+            <td>Password:</td>
+            <td>
+            <input type="password" name="password">
+            </td>
+            </tr>
+</table>
+        <div>
+
+            <input type="submit" style="width:100px; height:30px; font-size:100%; background:#191970; color:white" value="Log in" />
+
+            <!-- {%if(user_type == "student")%}
+            <a href= "/StudentIndex">
+                <input type="button" style="width:100px; height:30px; font-size:100%; background:#191970; color:white" value="Log in" />
+            </a>
+            {%else%}
+            <a href= "/TeacherIndex">
+                <input type="button" style="width:100px; height:30px; font-size:100%; background:#191970; color:white" value="Log in" />
+            </a>
+            {%endif%} -->
+        </div>
+</div>
+</form>
+</body>
+</html>
